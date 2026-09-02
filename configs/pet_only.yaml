@@ -1,0 +1,12 @@
+_base_: default.yaml
+
+data:
+  channel_indices: [0]
+
+model:
+  input_channels: 1
+
+training:
+  output_dir: outputs/pet_scratch
+  epochs: 300
+  learning_rate: 0.0001

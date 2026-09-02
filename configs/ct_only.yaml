@@ -1,0 +1,12 @@
+_base_: default.yaml
+
+data:
+  channel_indices: [1]
+
+model:
+  input_channels: 1
+
+training:
+  output_dir: outputs/ct_scratch
+  epochs: 300
+  learning_rate: 0.0001

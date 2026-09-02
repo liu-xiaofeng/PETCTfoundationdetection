@@ -1,0 +1,12 @@
+_base_: default.yaml
+
+data:
+  workers: 0
+
+training:
+  output_dir: outputs/smoke
+  epochs: 1
+  samples_per_epoch: 4
+  batch_size: 1
+  validation_interval: 1
+  validation_max_cases: 1

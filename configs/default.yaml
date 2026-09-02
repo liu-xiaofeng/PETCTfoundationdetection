@@ -1,0 +1,56 @@
+# Paper-aligned defaults for whole-body 3D PET/CT lesion detection.
+# Paths are placeholders; override with CLI flags or a local config.
+
+seed: 42
+
+foundation:
+  enabled: false
+  checkpoint: null
+
+data:
+  raw_root: /path/to/AutoPET_FDG
+  processed_root: data/processed
+  splits_dir: splits
+  annotations: data/annotations.json
+  patch_size: [96, 128, 128]
+  min_lesion_voxels: 3
+  positive_crop_probability: 0.5
+  random_flips: true
+  workers: 4
+  annotation_workers: 4
+
+model:
+  input_channels: 2
+  pyramid_levels: [p2, p3, p4, p5]
+  # Same three k-means lesion shapes at every pyramid level (ZYX voxels).
+  feature_map_scales: [1, 1, 1, 1]
+  base_anchor_shapes:
+    - [3.1, 5.9, 5.1]
+    - [12.0, 20.3, 18.7]
+    - [41.0, 52.2, 55.3]
+  matcher: atss
+  atss_num_candidates: 4
+  focal_alpha: 0.25
+  focal_gamma: 2.0
+
+training:
+  output_dir: outputs/petct_scratch
+  epochs: 300
+  samples_per_epoch: 400
+  batch_size: 2
+  learning_rate: 0.0001
+  validation_interval: 20
+  resume: null
+
+inference:
+  score_threshold: 0.5
+  nms_threshold: 0.1
+  topk_candidates_per_level: 1000
+  detections_per_image: 300
+  overlap: 0.5
+  sw_batch_size: 1
+  blend_mode: constant
+
+evaluation:
+  iou_threshold: 0.25
+  fp_per_scan: [1.0, 2.0, 4.0]

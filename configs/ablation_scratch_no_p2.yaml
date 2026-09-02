@@ -1,0 +1,8 @@
+_base_: petct_scratch.yaml
+
+model:
+  pyramid_levels: [p3, p4, p5]
+  feature_map_scales: [1, 1, 1]
+
+training:
+  output_dir: outputs/ablation_scratch_no_p2

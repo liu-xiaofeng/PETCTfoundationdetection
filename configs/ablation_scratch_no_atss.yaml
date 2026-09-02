@@ -1,0 +1,9 @@
+_base_: petct_scratch.yaml
+
+model:
+  matcher: iou
+  fg_iou_thresh: 0.5
+  bg_iou_thresh: 0.4
+
+training:
+  output_dir: outputs/ablation_scratch_no_atss
