@@ -2,7 +2,7 @@
 
 Training and evaluation code for:
 
-> Liu et al., *Quantifying Multi-Lesion Detection and Localization in Whole-Body FDG PET/CT with a Multimodal Foundation Model*, Physics in Medicine & Biology (manuscript).
+> Liu et al., *Quantifying Multi-Lesion Detection and Localization in Whole-Body FDG PET/CT with a Multimodal Foundation Model*, In Submission. 
 
 The detector is a one-stage 3D RetinaNet with a PlainConvUNet (nnU-Net v2 3D full-resolution) encoder–decoder backbone. This repository contains **detection training, inference, and FROC/AFROC evaluation only**. It does **not** include MAE pretraining code, foundation-model weights, run outputs, or intermediate files.
 
@@ -20,7 +20,6 @@ Pretrained initialization loads an off-the-shelf PlainConvUNet checkpoint from t
 ## Requirements
 
 - Python 3.10+
-- CUDA GPU (paper: NVIDIA A100)
 - AutoPET FDG PET/CT with tumor masks ([Gatidis et al., *Scientific Data* 2022](https://doi.org/10.1038/s41597-022-01718-3))
 
 ```bash
