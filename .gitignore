@@ -1,0 +1,23 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+*.egg-info/
+dist/
+build/
+
+# Data, weights, and run artifacts (not for GitHub)
+data/processed/
+data/annotations.json
+outputs/
+checkpoints/
+logs/
+*.pt
+*.pth
+*.ckpt
+*.npy
+*.nii.gz
+
+.env
+.DS_Store
