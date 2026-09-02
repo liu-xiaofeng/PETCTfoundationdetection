@@ -6,7 +6,7 @@ Training and evaluation code for:
 
 The detector is a one-stage 3D RetinaNet with a PlainConvUNet (nnU-Net v2 3D full-resolution) encoder–decoder backbone. This repository contains **detection training, inference, and FROC/AFROC evaluation only**. It does **not** include MAE pretraining code, foundation-model weights, run outputs, or intermediate files.
 
-Four matched configurations from the paper are supported:
+Four matched configurations
 
 | Config | Input | Initialization | Epochs | Learning rate |
 |---|---|---|---:|---:|
@@ -34,7 +34,7 @@ Expected per-scan files under `--data-root`:
 <data-root>/<case_id>/tumorSeg.nii.gz
 ```
 
-`case_id` may be a single folder or `subject/scan` for multi-scan subjects. Subject IDs for the paper split are listed in `splits/`.
+`case_id` may be a single folder or `subject/scan` for multi-scan subjects. Subject IDs for the split are listed in `splits/`.
 
 ## Quick start
 
@@ -67,7 +67,7 @@ python scripts/train.py --config configs/petct_pretrained.yaml \
   --pretrained-checkpoint /path/to/plainconvunet_mae.pth --seed 42
 ```
 
-The paper reports mean ± SD over three independent seeds. Repeat with `--seed 42, 43, 44` (or any three seeds).
+Repeat with `--seed 42, 43, 44` (or any three seeds).
 
 Checkpoints: `outputs/<run>/last.pt` and `best.pt` (selected on validation FROC at 1/2/4 FP/scan). The 200-case test split is never used for model selection.
 
@@ -90,9 +90,9 @@ python scripts/evaluate.py --config configs/petct_scratch.yaml \
 
 Outputs (gitignored): `predictions.json`, `metrics.json`, FROC/AFROC plots, and a size-stratified table.
 
-## Paper ↔ code
+ 
 
-| Paper | This repository |
+ 
 |---|---|
 | 1,014 studies; 700 / 114 / 200 subject-independent split | `splits/train.txt`, `val.txt`, `test.txt` |
 | Spacing `2.0 x 2.0 x 3.0 mm`; volume-wise z-score; blank CT borders removed | `mae_petct_detection/preprocess.py` |
@@ -129,7 +129,7 @@ python -m pytest
 ## Layout
 
 ```
-configs/                 # Paper hyperparameters
+configs/                 # Hyperparameters
 splits/                  # Train / val / test case IDs
 mae_petct_detection/     # Data, model, training, FROC/AFROC
 scripts/prepare_data.py
@@ -138,9 +138,6 @@ scripts/evaluate.py
 tests/
 ```
 
-## Citation
-
-Please cite the detection paper and the AutoPET dataset. MAE pretrained PlainConvUNet initialization is described in the companion PET/CT foundation-model paper and is obtained from that project’s repository, not from this one.
 
 ## License
 
